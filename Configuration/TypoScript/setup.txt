@@ -1,0 +1,16 @@
+config.tx_extbase.settings {
+	ext_languagevisibility {
+		elements {
+			mappings {
+
+					# <alias> = <table>
+					#
+					# maps the <table> to
+					# "Tx_ExtLangaugevisibility_Element_" . ucfirst(<alias>)
+					# class
+				news = tx_news_domain_model_news
+				newsMedia = tx_news_domain_model_media
+			}
+		}
+	}
+}
