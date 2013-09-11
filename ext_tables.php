@@ -30,7 +30,7 @@ foreach($extensions as $extension => $tables) {
 		foreach($tables as $table) {
 			t3lib_div::loadTCA($table);
 			t3lib_extMgm::addTCAcolumns($table, $langVisibilityColumn, 1);
+			t3lib_extMgm::addToAllTCAtypes($table, '--div--;LLL:EXT:languagevisibility/locallang_db.xml:tabname,tx_languagevisibility_visibility;;;;1-1-1');
 		}
-		t3lib_extMgm::addToAllTCAtypes($table, '--div--;LLL:EXT:languagevisibility/locallang_db.xml:tabname,tx_languagevisibility_visibility;;;;1-1-1');
 	}
 }
