@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2013 AOE media (dev@aoemedia.de)
+ * (c) 2013 AOE GmbH (dev@aoe.com)
  * All rights reserved
  *
  * This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,10 +22,12 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+namespace Aoe\ExtLanguagevisibility\Element;
+
 /**
  * Defines visibility element type for news-media record.
  *
- * @author Chetan Thapliyal <chetan.thapliyal@aoemmedia.de>
+ * @author Chetan Thapliyal <chetan.thapliyal@aoe.com>
  */
-class Tx_ExtLanguagevisibility_Element_NewsMedia extends Tx_ExtLanguagevisibility_Element_News {
+class NewsMedia extends News {
 }

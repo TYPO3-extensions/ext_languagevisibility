@@ -26,11 +26,10 @@ $extensions = array(
 
 	// add tca configuration for visibility column in tables
 foreach($extensions as $extension => $tables) {
-	if (t3lib_extMgm::isLoaded($extension)) {
+	if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded($extension)) {
 		foreach($tables as $table) {
-			t3lib_div::loadTCA($table);
-			t3lib_extMgm::addTCAcolumns($table, $langVisibilityColumn, 1);
-			t3lib_extMgm::addToAllTCAtypes($table, '--div--;LLL:EXT:languagevisibility/locallang_db.xml:tabname,tx_languagevisibility_visibility;;;;1-1-1');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns($table, $langVisibilityColumn, 1);
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes($table, '--div--;LLL:EXT:languagevisibility/locallang_db.xml:tabname,tx_languagevisibility_visibility;;;;1-1-1');
 		}
 	}
 }

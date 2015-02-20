@@ -15,9 +15,10 @@ $extensions = array(
 
 	// register visibility-element factory class to language visibility hook
 foreach($extensions as $extension => $tables) {
-	if (t3lib_extMgm::isLoaded($extension)) {
+	if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded($extension)) {
 		foreach($tables as $table) {
-			$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['languagevisibility']['getElementForTable'][$table] = 'EXT:'.$_EXTKEY.'/Classes/Service/ElementFactory.php:&Tx_ExtLanguagevisibility_Service_ElementFactory';
+			$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['languagevisibility']['getElementForTable'][$table] = '\Aoe\ExtLanguagevisibility\Service\ElementFactory';
+//			$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['languagevisibility']['getElementForTable'][$table] = 'EXT:'.$_EXTKEY.'/Classes/Service/ElementFactory.php:&Tx_ExtLanguagevisibility_Service_ElementFactory';
 		}
 	}
 }

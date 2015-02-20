@@ -3,13 +3,12 @@ config.tx_extbase.settings {
 		elements {
 			mappings {
 
-					# <alias> = <table>
-					#
-					# maps the <table> to
-					# "Tx_ExtLangaugevisibility_Element_" . ucfirst(<alias>)
-					# class
-				news = tx_news_domain_model_news
-				newsMedia = tx_news_domain_model_media
+				# <table> = <class>
+				#
+				# maps the <table> to language visibility element class
+
+				tx_news_domain_model_news  = Aoe\ExtLanguagevisibility\Element\News
+				tx_news_domain_model_media = Aoe\ExtLanguagevisibility\Element\NewsMedia
 			}
 		}
 	}

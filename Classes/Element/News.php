@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2013 AOE media (dev@aoemedia.de)
+ * (c) 2013 AOE GmbH (dev@aoe.com)
  * All rights reserved
  *
  * This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,12 +22,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+namespace Aoe\ExtLanguagevisibility\Element;
+
 /**
  * Defines visibility element type for news record.
  *
- * @author Chetan Thapliyal <chetan.thapliyal@aoemmedia.de>
+ * @author Chetan Thapliyal <chetan.thapliyal@aoe.com>
  */
-class Tx_ExtLanguagevisibility_Element_News extends Tx_ExtLanguagevisibility_Element_Base {
+class News extends Base {
 
 	/**
 	 * Returns which field in the language should be used to read the default visibility
@@ -41,10 +43,10 @@ class Tx_ExtLanguagevisibility_Element_News extends Tx_ExtLanguagevisibility_Ele
 	/**
 	 * Gets language fallback order for a news record.
 	 *
-	 * @param  tx_languagevisibility_language $language
+	 * @param  \tx_languagevisibility_language $language
 	 * @return array
 	 */
-	public function getFallbackOrder(tx_languagevisibility_language $language) {
+	public function getFallbackOrder(\tx_languagevisibility_language $language) {
 		return $language->getFallbackOrderTTNewsElement($this);
 	}
 }

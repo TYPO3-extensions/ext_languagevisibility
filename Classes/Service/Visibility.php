@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2013 AOE media (dev@aoemedia.de)
+ * (c) 2013 AOE GmbH (dev@aoe.com)
  * All rights reserved
  *
  * This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,20 +22,24 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+namespace Aoe\ExtLanguagevisibility\Service;
+
+use TYPO3\CMS\Core\SingletonInterface;
+
 /**
- * @author Chetan Thapliyal <chetan.thapliyal@aoemmedia.de>
+ * @author Chetan Thapliyal <chetan.thapliyal@aoe.com>
  */
-class Tx_ExtLanguagevisibility_Service_Visibility implements t3lib_Singleton {
+class Visibility implements SingletonInterface {
 
 	/**
-	 * @param  tx_languagevisibility_language  $pObj
-	 * @param  array                           $visibility      Associative array
-	 *                                                                  priority => integer
-	 *                                                                  visibility =>
-	 * @param  tx_languagevisibility_element   $contextElement
+	 * @param  \tx_languagevisibility_language  $pObj
+	 * @param  array                            $visibility      Associative array
+	 *                                                               priority   => integer
+	 *                                                               visibility =>
+	 * @param  \tx_languagevisibility_element   $contextElement
 	 * @return mixed
 	 */
-	public function getDefaultVisibilityForElement(tx_languagevisibility_language $pObj, $visibility, tx_languagevisibility_element $contextElement) {
+	public function getDefaultVisibilityForElement(\tx_languagevisibility_language $pObj, $visibility, \tx_languagevisibility_element $contextElement) {
 		// implement if required
 		// enable hook in ext_localconf afterwards
 		return $visibility;

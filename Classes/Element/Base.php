@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2013 AOE media (dev@aoemedia.de)
+ * (c) 2013 AOE GmbH (dev@aoe.com)
  * All rights reserved
  *
  * This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,12 +22,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+namespace Aoe\ExtLanguagevisibility\Element;
+
 /**
  * Base class for new visibility type elements.
  *
- * @author Chetan Thapliyal <chetan.thapliyal@aoemmedia.de>
+ * @author Chetan Thapliyal <chetan.thapliyal@aoe.com>
  */
-abstract class Tx_ExtLanguagevisibility_Element_Base extends tx_languagevisibility_recordelement {
+abstract class Base extends \tx_languagevisibility_recordelement {
 
 	/**
 	 * Returns a formal description for this element type.

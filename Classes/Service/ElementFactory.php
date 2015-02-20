@@ -2,7 +2,7 @@
 /***************************************************************
  * Copyright notice
  *
- * (c) 2013 AOE media (dev@aoemedia.de)
+ * (c) 2013 AOE GmbH (dev@aoe.com)
  * All rights reserved
  *
  * This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,12 +22,18 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+namespace Aoe\ExtLanguagevisibility\Service;
+
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+
 /**
  * Generates visibility elements for the supported tables.
  *
- * @author Chetan Thapliyal <chetan.thapliyal@aoemmedia.de>
+ * @author Chetan Thapliyal <chetan.thapliyal@aoe.com>
  */
-class Tx_ExtLanguagevisibility_Service_ElementFactory implements t3lib_Singleton {
+class ElementFactory implements SingletonInterface {
 
 	/**
 	 * @var array
@@ -35,7 +41,7 @@ class Tx_ExtLanguagevisibility_Service_ElementFactory implements t3lib_Singleton
 	private $elementTableMap;
 
 	/**
-	 * @var Tx_Extbase_Object_ObjectManagerInterface
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 */
 	private $objectManager;
 
@@ -43,27 +49,27 @@ class Tx_ExtLanguagevisibility_Service_ElementFactory implements t3lib_Singleton
 	 * Initialized class instance.
 	 */
 	public function __construct() {
-		$this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
+		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 		$configuration = $this->objectManager
-								->get('Tx_Extbase_Configuration_ConfigurationManagerInterface')
-								->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-		$this->elementTableMap = $configuration['settings']['ext_languagevisibility']['elements']['mappings'];
+						->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface')
+						->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+		$this->elementTableMap = $configuration['ext_languagevisibility']['elements']['mappings'];
 	}
 
 	/**
-	 * @throws Exception
 	 * @param  string  $table
 	 * @param  integer $uid
 	 * @param  array   $row
 	 * @param  bool    $overlay_ids     Boolean parameter to overlay uid if the user is in workspace context
-	 * @return tx_languagevisibility_element
+	 * @return \tx_languagevisibility_element
+	 * @throws \Exception
 	 */
 	public function getElementForTable($table, $uid, $row, $overlay_ids) {
-		if ($element = array_search($table, $this->elementTableMap)) {
-			$elementClass = 'Tx_ExtLanguagevisibility_Element_' . ucfirst($element);
-			$elementObject = $this->objectManager->create($elementClass, $row);
+		if (isset($this->elementTableMap[$table])) {
+			$elementClass  = $this->elementTableMap[$table];
+			$elementObject = $this->objectManager->get($elementClass, $row);
 		} else {
-			throw new Exception($table.': Table not configured', 1366296552);
+			throw new \Exception($table.': Table not configured', 1366296552);
 		}
 
 		return $elementObject;
