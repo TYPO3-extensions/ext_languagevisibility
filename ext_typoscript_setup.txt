@@ -1,0 +1,15 @@
+config.tx_extbase.settings {
+	ext_languagevisibility {
+		elements {
+			mappings {
+
+					# <table> = <class>
+					#
+					# maps the <table> to language visibility element class
+
+				tx_news_domain_model_news  = Aoe\ExtLanguagevisibility\Element\News
+				tx_news_domain_model_media = Aoe\ExtLanguagevisibility\Element\NewsMedia
+			}
+		}
+	}
+}
