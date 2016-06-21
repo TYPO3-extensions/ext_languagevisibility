@@ -8,7 +8,8 @@ config.tx_extbase.settings {
 					# maps the <table> to
 					# "Tx_ExtLangaugevisibility_Element_" . ucfirst(<alias>)
 					# class
-				news = tx_news_domain_model_news
+				news      = tx_news_domain_model_news
+				newsFile  = tx_news_domain_model_file
 				newsMedia = tx_news_domain_model_media
 			}
 		}
